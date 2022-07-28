@@ -23,7 +23,7 @@ const svg = d3.select("#chart")
 
 //Generamos un label para el eje
 svg.append("text")
-.attr("class","axis_label") 
+.attr("class","xAxis_label") 
 .attr("text-anchor", "end") 
 .attr("x", width/1.7) 
 .attr("y", height - 1)
@@ -113,6 +113,8 @@ function update(dataTotalFiltred) {
     y.domain(resultado.map(d => d.country))
     
     //Dibujamos los ejes:
+   
+  
     xAxisGroup
         .transition()
         .duration(300)

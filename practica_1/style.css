@@ -38,6 +38,16 @@
     letter-spacing:1px;    
     text-transform:capitalize;
         }
+.xAxis_label{
+    color:rgb(43, 47, 77); 
+    font-size:15px;
+    font-family:sans-serif;
+    font-weight:900;
+    font-style:italic;
+    line-height:30px;
+    letter-spacing:1px;    
+    text-transform:capitalize;
+        }
 
 .chartMax {
     fill: #cb6f65;
