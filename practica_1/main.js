@@ -1,10 +1,10 @@
 // CHART START
-const width = 900
-const height = 600
+const width = 1500
+const height = 650
 const margin = {
     top:10,
     bottom:40,
-    left:80,
+    left:160,
     right:10
 }
 
@@ -23,25 +23,26 @@ const svg = d3.select("#chart")
 
 //Generamos un label para el eje
 svg.append("text")
-.attr("class", "axis_label") 
+.attr("class","axis_label") 
 .attr("text-anchor", "end") 
 .attr("x", width/1.7) 
 .attr("y", height - 1)
 .text("cups won");
 
+//Creamos con d3 un svg para el slider
 var gTime = d3
     .select('#slider-time')  // div donde lo insertamos
     .append('svg')
+    .attr("class","year-label") 
     .attr('width', width )
-    .attr('height', 100)
-    
-    .attr('transform', 'translate(30,30)');
+    .attr('height', 100)    
+    .attr('transform', 'translate(0,30)');
 
 const elementGroup = svg.append("g").attr("transform", `translate(0,${margin.top})`)
 const axisGroup = svg.append("g").attr("id","axisGroup")
 const xAxisGroup = axisGroup.append("g").attr("transform", `translate(${margin.left},${height-margin.bottom})`)
 const yAxisGroup = axisGroup.append("g").attr("transform", `translate(${margin.left},${margin.top})`)
-const sliderGroup = gTime.append("g").attr("transform", `translate(${width},${margin.top})`)
+const sliderGroup = gTime.append("g")
 
 //Defino la escala:
 const x = d3.scaleLinear()
@@ -160,7 +161,7 @@ function update(dataTotalFiltred) {
             .text(d => d.cups)
             .attr("x",d => x(d.cups))
             .attr("y", d => y(d.country))
-            .attr("transform", `translate(35,${margin.bottom})`)
+            .attr("transform", `translate(60,${margin.bottom})`)
             .attr("class","cups")
             .transition()
             .duration(300)
@@ -171,7 +172,7 @@ function update(dataTotalFiltred) {
         .attr("class","cups")
         .attr("x",d => x(d.cups))
         .attr("y", d => y(d.country))
-        .attr("transform", `translate(35,${margin.bottom})`)
+        .attr("transform", `translate(60,${margin.bottom})`)
         .transition()
         .duration(300)
         
@@ -189,7 +190,7 @@ function slider() {
         .min(d3.min(dataTotal.map(d=>d.year)))  // rango años
         .max(d3.max(dataTotal.map(d=>d.year)))
         .step(4)  // cada cuánto aumenta el slider
-        .width(600)  // ancho de nuestro slider
+        .width(800)  // ancho de nuestro slider
         .ticks(dataTotal.length)  
         .default(d3.max(dataTotal.map(d=>d.year)))  // punto inicio de la marca
         .on('onchange', val => {
@@ -205,12 +206,14 @@ function slider() {
             }catch{console.log("La función aún no está conectada con la gráfica")}
             
         })
+        
 
         gTime.call(sliderTime);
         
         d3.select('#value-time')
             .text([sliderTime.value()])
             .attr("class","year-slider")
+            
             
 }                                                       
 
