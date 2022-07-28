@@ -10,7 +10,7 @@
     text-transform:capitalize;
     text-indent:10px;
     padding-top:10px ;
-    padding-left:10px ;
+    padding-left:310px ;
     text-align:left;
    }
 #line {
@@ -19,11 +19,13 @@
 }
 
 .womanGroup {
-    fill :rgb(14, 155, 155) 
+    fill :rgb(14, 155, 155);
+    font-size:20px;
 }
 
 .diCaprioGroup {
-    fill :rgb(236, 90, 11)
+    fill :rgb(236, 90, 11);
+    font-size:20px;
 }
 
 .body {
@@ -32,6 +34,7 @@
 
 .axis {
     color: white;
+    font-size:20px;
 }
 
 .tooltip {
@@ -39,15 +42,11 @@
     pointer-events: none;
     background:rgb(55, 44, 44);
     color: #fff;
-  }
-
-.grid {
-    stroke: lightgrey;
-        stroke-opacity: 0.7;
-        shape-rendering: crispEdges;
+    font-size:20px;
   }
 
   .task {
     stroke:rgb(220, 72, 9);
-    fill:none
+    fill:none;
+    font-size:20px;
 }

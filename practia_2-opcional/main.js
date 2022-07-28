@@ -3,13 +3,13 @@ const diCaprioBirthYear = 1974;
 const age = function(year) { return year - diCaprioBirthYear}
 const today = new Date().getFullYear()
 const ageToday = age(today)
-const width = 1000
-const height = 500
+const width = 1500
+const height = 800
 const margin = {
     top:10, 
     bottom: 40,
-    left:75, 
-    right: 15
+    left:250, 
+    right: 35
 }
 let max = 0 //constante con la que calcularemos las novias con mayor edad
 // ----------------------------------------------------------
@@ -60,19 +60,19 @@ function legendCreate(group) {
     group.append("text")
         .attr("class","womanGroup")
         .text("DiCaprio Girlfriends Age")
-        .attr("x", 99)
+        .attr("x", 106)
         .attr("y", 50)
     group.append("rect")
         .attr("class","womanGroup")
         .attr("x", 65)
         .attr("y", 40)
-        .attr("width", 30)
+        .attr("width", 35)
         .attr("height", 10)
     group.append("text")
         .text("Age Limit Leo´s Girldfriends")
         .attr("class", "womanGroup")
-        .attr("x", 525)
-        .attr("y", 255)   
+        .attr("x", 720)
+        .attr("y", 450)   
     
     
 }
@@ -88,8 +88,8 @@ function womanCreate(group) {
     group.append("text")
             .text(d=>d.age)
             .attr("class",d=>d.name)
-            .attr("x", d => x(d.year)-8)
-            .attr("y", d => y(d.age)-13)
+            .attr("x", d => x(d.year)-10)
+            .attr("y", d => y(d.age)-12)
             .attr("height", d => height - margin.bottom - margin.top - y(d.age) )
             .attr("width", 20)
     
@@ -142,7 +142,7 @@ d3.csv("data.csv").then(data =>{
         .attr("id", "line")
         .attr("d", d3.line()
         .x(d => x(d.year))
-        .y(d => y(27.5)))
+        .y(d => y(26.5)))
     
 
     //Hacemos data binding y Hacemos la llamada a la función que crea los objetos de las novias
