@@ -20,12 +20,12 @@
 
 .womanGroup {
     fill :rgb(14, 155, 155);
-    font-size:20px;
+    font-size:25px;
 }
 
 .diCaprioGroup {
     fill :rgb(236, 90, 11);
-    font-size:20px;
+    font-size:25px;
 }
 
 .body {
@@ -41,8 +41,8 @@
     position: absolute;
     pointer-events: none;
     background:rgb(55, 44, 44);
-    color: #fff;
-    font-size:20px;
+    color: rgb(14, 155, 155);
+    font-size:25px;
   }
 
   .task {

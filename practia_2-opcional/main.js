@@ -39,7 +39,7 @@ const x = d3.scaleLinear().range([0, width - margin.left - margin.right])
 const y = d3.scaleLinear().range([height - margin.top - margin.bottom, 0])
 
 //Declaramos los ejes
-const xAxis = d3.axisBottom().scale(x)
+const xAxis = d3.axisBottom().scale(x).tickFormat(d3.format(""));
 const yAxis = d3.axisLeft().scale(y)
 
 
@@ -53,27 +53,27 @@ function makeMax(data){
 function legendCreate(group) {
     group.append("text")
         .attr("class", "legend")
-        .text("--o-- DiCaprio Age")
+        .text("--o-- DiCaprio´s Age")
         .attr("class","diCaprioGroup")
         .attr("x", 65)
         .attr("y", 25)
     group.append("text")
         .attr("class","womanGroup")
-        .text("DiCaprio Girlfriends Age")
-        .attr("x", 106)
+        .text("DiCaprio´s Girlfriend´s Age")
+        .attr("x", 116)
         .attr("y", 50)
     group.append("rect")
         .attr("class","womanGroup")
         .attr("x", 65)
         .attr("y", 40)
-        .attr("width", 35)
+        .attr("width", 44)
         .attr("height", 10)
     group.append("text")
         .text("Age Limit Leo´s Girldfriends")
         .attr("class", "womanGroup")
-        .attr("x", 720)
-        .attr("y", 450)   
-    
+        .attr("x", 670)
+        .attr("y", y(28)) 
+        
     
 }
 //Declaramos la función que crea dentro del grupo de las novias los objetos
@@ -88,8 +88,8 @@ function womanCreate(group) {
     group.append("text")
             .text(d=>d.age)
             .attr("class",d=>d.name)
-            .attr("x", d => x(d.year)-10)
-            .attr("y", d => y(d.age)-12)
+            .attr("x", d => x(d.year)-13)
+            .attr("y", d => y(d.age)-11)
             .attr("height", d => height - margin.bottom - margin.top - y(d.age) )
             .attr("width", 20)
     
@@ -106,9 +106,9 @@ function diCaprioCreate(group) {
 
     group.append("text")
         .text(d=>d.LeoAge)
-        .attr("class", d => d.LeoAge)
-        .attr("x", d => x(d.year)-10)
-        .attr("y", d => y(d.LeoAge)-10) 
+        .attr("class", "diCaprioGroup")
+        .attr("x", d => x(d.year)-13)
+        .attr("y", d => y(d.LeoAge)-12) 
 
     
 }
@@ -136,13 +136,22 @@ d3.csv("data.csv").then(data =>{
         .style("opacity", 0)
 
     //Hacemos la llamada a la función que crea los datos de la leyenda
-    legend.call(legendCreate) 
+
+    legend.selectAll("text").data(dataFiltred)
+        .join("text")
+        .text("|") //creamos las barras que unen a la llave de las edades maximas
+        .attr("class","task")
+        .attr("x", d => x(d.year)-4 )
+        .attr("y", y(26.8)) 
+
+    legend.call(legendCreate)     
     legend.datum(dataFiltred)
         .append("path")
         .attr("id", "line")
         .attr("d", d3.line()
-        .x(d => x(d.year))
-        .y(d => y(26.5)))
+        .x(d => x(d.year)-1)
+        .y(d => y(27.4)))
+        
     
 
     //Hacemos data binding y Hacemos la llamada a la función que crea los objetos de las novias
@@ -179,7 +188,8 @@ d3.csv("data.csv").then(data =>{
         .join("circle")
         .attr("class","task")
         .attr("cx", d => x(d.year))
-        .attr("cy", d => y(d.age)-17)
+        .attr("cy", d => y(d.age)-19)
         .attr("r", 18) 
-
+   
+        
 })

@@ -26,7 +26,9 @@
     text-emphasis-color: 0;
     }
 
-
+.axis{
+    padding-left:20px ;
+            }
 
 .axis_label{
     color:rgb(43, 47, 77); 
